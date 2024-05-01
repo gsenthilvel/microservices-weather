@@ -1,0 +1,6 @@
+@CloudWeather.Preciptiation_HostAddress = http://localhost:5157
+
+GET {{CloudWeather.Preciptiation_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
