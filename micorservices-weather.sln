@@ -3,21 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudWeather.DataLoader", "CloudWeather.DataLoader\CloudWeather.DataLoader.csproj", "{F7A1EAD4-3623-4505-9B2E-3A209657DAC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudWeather.DataLoader", "CloudWeather.DataLoader\CloudWeather.DataLoader.csproj", "{F7A1EAD4-3623-4505-9B2E-3A209657DAC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudWeather.Preciptiation", "CloudWeather.Preciptiation\CloudWeather.Preciptiation.csproj", "{50C499DC-9F1E-4C50-8869-0AD2696C2C33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudWeather.Preciptiation", "CloudWeather.Preciptiation\CloudWeather.Preciptiation.csproj", "{50C499DC-9F1E-4C50-8869-0AD2696C2C33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudWeather.Report", "CloudWeather.Report\CloudWeather.Report.csproj", "{5F8F8A43-749E-4CA1-B08F-AC1A18D707FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudWeather.Report", "CloudWeather.Report\CloudWeather.Report.csproj", "{5F8F8A43-749E-4CA1-B08F-AC1A18D707FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudWeather.Temperature", "CloudWeather.Temperature\CloudWeather.Temperature.csproj", "{5CBA7493-95B0-4691-BD50-C0F7B6D11D33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudWeather.Temperature", "CloudWeather.Temperature\CloudWeather.Temperature.csproj", "{5CBA7493-95B0-4691-BD50-C0F7B6D11D33}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B9D3C30B-354F-4556-AE58-729FC8CB6018}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yaml = docker-compose.yaml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{F7A1EAD4-3623-4505-9B2E-3A209657DAC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -36,5 +38,11 @@ Global
 		{5CBA7493-95B0-4691-BD50-C0F7B6D11D33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CBA7493-95B0-4691-BD50-C0F7B6D11D33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CBA7493-95B0-4691-BD50-C0F7B6D11D33}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2F7C8D59-BDA7-49C1-8802-956F4A087A52}
 	EndGlobalSection
 EndGlobal
