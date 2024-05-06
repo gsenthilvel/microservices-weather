@@ -1,4 +1,4 @@
-﻿namespace CloudWeather.Report.Models
+﻿namespace CloudWeather.DataLoader.Models
 {
     public class PerciptModel
     {
