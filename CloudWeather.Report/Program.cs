@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHttpClient();
 builder.Services.AddTransient<IWeatherReportAggregator, WeatherReportAggregator>();
 builder.Services.AddOptions();
-builder.Services.Configure<WeatherDataConfig>(builder.Configuration.GetSection("WeatherData"));
+builder.Services.Configure<WeatherDataConfig>(builder.Configuration.GetSection("WeatherDataConfig"));
 
 builder.Services.AddDbContext<WeatherReportDbContext>(options =>
 {
@@ -17,6 +17,7 @@ builder.Services.AddDbContext<WeatherReportDbContext>(options =>
     options.EnableDetailedErrors();
     options.UseNpgsql(builder.Configuration.GetConnectionString("AppDb"));
 }, ServiceLifetime.Transient);
+
 
 var app = builder.Build();
 app.MapGet(

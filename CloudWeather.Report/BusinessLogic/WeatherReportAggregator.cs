@@ -1,21 +1,29 @@
 ﻿using CloudWeather.Report.Config;
 using CloudWeather.Report.DataAccess;
 using CloudWeather.Report.Models;
+using Microsoft.Extensions.Options;
 using System.Text.Json;
 
 namespace CloudWeather.Report.BusinessLogic
 {
+    public interface IWeatherReportAggregator
+    {
+        public Task<WeatherReport> GetWeatherReportsAsync(string zip, int days);
+    }
     public class WeatherReportAggregator : IWeatherReportAggregator
     {
         private readonly IHttpClientFactory _clientFactory;
         private readonly ILogger<WeatherReportAggregator> _logger;
         private readonly WeatherDataConfig _config;
         private readonly WeatherReportDbContext _db;
-        public WeatherReportAggregator(IHttpClientFactory clientFactory, ILogger<WeatherReportAggregator> logger, WeatherDataConfig config, WeatherReportDbContext db)
+        public WeatherReportAggregator(IHttpClientFactory clientFactory, 
+            ILogger<WeatherReportAggregator> logger, 
+            IOptions<WeatherDataConfig> config, 
+            WeatherReportDbContext db)
         {
             _clientFactory = clientFactory;
             _logger = logger;
-            _config = config;
+            _config = config.Value;
             _db = db;
         }
 
@@ -24,8 +32,12 @@ namespace CloudWeather.Report.BusinessLogic
             var httpClient = _clientFactory.CreateClient();
 
             var perciptData = await GetPerciptData(httpClient, zip, days);
-            var totalSnow = perciptData.Where(p => p.WeatherType == "Snow").Sum(p => p.AmountInches);
-            var totalRain = perciptData.Where(p => p.WeatherType == "Rain").Sum(p => p.AmountInches);
+            var totalSnow = perciptData.Where
+                (p => p.WeatherType.ToLower() == "snow").
+                Sum(p => p.AmountInches);
+            var totalRain = perciptData.
+                Where(p => p.WeatherType.ToLower() == "rain").
+                Sum(p => p.AmountInches);
 
             var tempData = await GetTempData(httpClient, zip, days);
             var averageHighTemp = tempData.Average(t => t.TempHighF);
@@ -82,6 +94,7 @@ namespace CloudWeather.Report.BusinessLogic
             };
             var perciptData = await response.Content.
                 ReadFromJsonAsync<List<PerciptModel>>(jsonSerializerOptions);
+
             return perciptData ?? new List<PerciptModel>();
         }
 
