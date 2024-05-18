@@ -40,8 +40,8 @@ namespace CloudWeather.Report.BusinessLogic
                 Sum(p => p.AmountInches);
 
             var tempData = await GetTempData(httpClient, zip, days);
-            var averageHighTemp = tempData.Average(t => t.TempHighF);
-            var averageLowTemp = tempData.Average(t => t.TempLowF);
+            var averageHighTemp = tempData.Any() ? tempData.Average(t => t.TempHighF) : 0;
+            var averageLowTemp = tempData.Any() ? tempData.Average(t => t.TempLowF) : 0;
 
             _logger.LogInformation($"Weather report for {zip} for the next {days} days: ");
             _logger.LogInformation($"Total snow: {totalSnow} inches");
